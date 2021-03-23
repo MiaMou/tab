@@ -118,7 +118,30 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"main.js":[function(require,module,exports) {
+window.onload = function () {
+  // 获取元素
+  var tabBar = document.querySelector('.tab_bar').querySelectorAll('li');
+  var tabContent = document.querySelector('.tab_content').querySelectorAll('li');
 
+  for (var i = 0; i < tabBar.length; i++) {
+    // 自定义属性，保存下标
+    tabBar[i].index = i;
+
+    tabBar[i].onclick = function () {
+      for (var j = 0; j < tabBar.length; j++) {
+        tabBar[j].style = '';
+        tabContent[j].style = ''; // tabBar[j].className = '';
+        // tabContent[j].className = ''
+      } // this.className = 'active'  
+      // tabContent[this.index].className='show'  
+
+
+      this.style.backgroundColor = '#007AFF';
+      this.style.color = 'white';
+      tabContent[this.index].style.display = 'block';
+    };
+  }
+};
 },{}],"../../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
