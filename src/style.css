@@ -15,16 +15,13 @@ img {
   max-width: 100%;
 }
 
-body {
-  max-width: 1100px;
-  max-height: 500px;
-  border: 1px solid #c7c7c7;
-}
 .page {
   display: flex;
-  width: 1000px;
-  height: 350px;
-  margin: 60px 50px 90px 50px;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid grey;
 }
 
 main {
@@ -58,15 +55,14 @@ main {
 }
 
 .tab {
-  width: 300px;
+  width: 299px;
   height: 350px;
   margin-left: 20px;
+  border: 1px solid hsl(211, 100%, 50%);
+  border-radius: 4px;
 }
 .tab > .tab_bar {
   display: flex;
-  border: 1px solid #007aff;
-  border-radius: 4px 4px 0 0;
-  margin-bottom: -1px;
 }
 .tab > .tab_bar > li {
   width: 100px;
@@ -75,6 +71,9 @@ main {
   color: #007aff;
   text-align: center;
   font-size: 14px;
+  border: 1px solid #007aff;
+  border-color: transparent #007aff #007aff transparent;
+  margin-right: -1px;
 }
 
 /* .tab > .tab_bar > .active {
@@ -82,9 +81,6 @@ main {
   color: white;
 } */
 .tab > .tab_content {
-  height: 318px;
-  border: 1px solid #007aff;
-  border-radius: 0 0 4px 4px;
 }
 .tab > .tab_content > li {
   display: none;
