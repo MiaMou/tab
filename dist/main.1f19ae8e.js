@@ -120,8 +120,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"main.js":[function(require,module,exports) {
 window.onload = function () {
   // 获取元素
-  var tabBar = document.querySelector('.tab_bar').querySelectorAll('li');
-  var tabContent = document.querySelector('.tab_content').querySelectorAll('li');
+  var tabBar = document.querySelectorAll('.tab_bar li');
+  var tabContent = document.querySelectorAll('.tab_content li');
 
   for (var i = 0; i < tabBar.length; i++) {
     // 自定义属性，保存下标
@@ -140,38 +140,28 @@ window.onload = function () {
       this.style.color = 'white';
       tabContent[this.index].style.display = 'block';
     };
-  } // let images = document.querySelectorAll('img')
+  }
 
+  var previewPane = document.querySelector('.preview_pane');
+  var closeImg = previewPane.querySelector('.close_img');
 
-  var flag = true,
-      //状态true为正常的状态,false为放大的状态
-  imgH,
-      //图片的高度
-  imgW,
-      //图片的宽度
-  img = document.querySelectorAll('img'); //图片元素
+  closeImg.onclick = function () {
+    previewPane.classList.add("close");
+  };
 
-  for (var _i = 0; _i < img.length; _i++) {
-    imgH = img[_i].height; //获取图片的高度
+  var previewImg = previewPane.querySelector('.preview_img');
+  var imgs = document.querySelectorAll('.imageList .image img');
 
-    imgW = img[_i].width; //获取图片的宽度
-
-    img[_i].onclick = function () {
-      //图片点击事件
-      if (flag) {
-        //图片为正常状态,设置图片宽高为现在宽高的2倍
-        flag = false; //把状态设为放大状态
-
-        this.height = imgH * 2;
-        this.width = imgW * 2;
-      } else {
-        //图片为放大状态,设置图片宽高为现在宽高的二分之一
-        flag = true; //把状态设为正常状态
-
-        this.height = imgH / 2;
-        this.width = imgW / 2;
-      }
+  var _loop = function _loop(_i) {
+    imgs[_i].onclick = function () {
+      previewImg.src = imgs[_i].src;
+      previewImg.height = imgs[_i].height * 3;
+      previewPane.classList.remove("close");
     };
+  };
+
+  for (var _i = 0; _i < imgs.length; _i++) {
+    _loop(_i);
   }
 };
 },{}],"../../../../.config/yarn/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -202,7 +192,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49177" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49667" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
