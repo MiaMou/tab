@@ -2,22 +2,20 @@ window.onload = function(){
     // 获取元素
     let tabBar = document.querySelectorAll('.tab_bar li')
     let tabContent = document.querySelectorAll('.tab_content li')
-    for(let i=0; i<tabBar.length; i++){
-        // 自定义属性，保存下标
-        tabBar[i].index = i
+
+    let curIndex = 0;   // 自定义属性，保存下标
+    for(let i=0; i<tabBar.length; i++){     
         tabBar[i].onclick = function(){
-            for(let j=0; j<tabBar.length; j++){
-                tabBar[j].style = '';
-                tabContent[j].style = ''
-                // tabBar[j].className = '';
-                // tabContent[j].className = ''
-            }
-            // this.className = 'active'  
-            // tabContent[this.index].className='show'  
+            tabBar[curIndex].style = '';
+            tabContent[curIndex].classList.remove("show")
+
             this.style.backgroundColor = '#007AFF'
             this.style.color = 'white'
-            tabContent[this.index].style.display='block' 
-                   
+            tabContent[i].classList.add("show")
+
+            curIndex = i
+            // tabContent[curIndex].className = ''
+            // tabContent[i].className='show'                 
         }
     }
     
